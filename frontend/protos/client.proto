@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package wkclientpackage;
+
+service WorkerKhojoCustomer {
+    // Customer create profile api takes customer details and outputs a successful registration message
+    rpc create_profile(CustDetails) returns (ResponseMess) {};
+    // Requirements submission api takes customer requirement and outputs a successful submission message
+    rpc submit_requirement(Requirements) returns (ResponseMess) {};
+}
+
+message CustDetails{ // customer details
+    string name = 1;
+    int32 age = 2;
+    string address = 3;
+    string gender = 4;
+    string email = 5;
+}
+
+message ResponseMess{
+    string code = 1;
+    string message = 2;
+    string clientid = 3;
+     // success message
+}
+
+message Requirements {
+    map<string,string> reqmap = 1; 
+    string clientid = 2;
+}
+
